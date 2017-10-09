@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 process.env.NODE_ENV = 'production' // 这个要写 .babel env 坑！
 
 module.exports = {
-  	entry: path.resolve(__dirname, 'app/Router.js'),
+  	entry: path.resolve(__dirname, 'app/Index.js'),
   	output: {
 	  	path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js'
