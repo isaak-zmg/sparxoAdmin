@@ -16,7 +16,7 @@ export default class Header extends React.Component {
         <Row>
           <Col xs={24} sm={24} md={12} lg={12}>
             <a className="logo">
-              <img src="../images/new_logo.png" alt="logo" />
+              <img src={require("../images/new_logo.png")} alt="logo" />
               <span>Sparxo Admin</span>
             </a>
           </Col>

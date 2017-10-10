@@ -51,7 +51,8 @@ export default class User extends React.Component {
   componentWillMount() {
     const { commonStore, location } = this.props;
     var path = location.pathname.split("/")[1];
-    commonStore.currentPaht = path;
+    commonStore.currentPath = path;
+    debugger
     var url_param = {
       role_ids: [2, 5]
     }

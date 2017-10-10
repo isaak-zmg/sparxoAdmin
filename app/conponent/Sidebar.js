@@ -2,9 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
+import {observer} from 'mobx-react';
 
 const SubMenu = Menu.SubMenu;
 
+
+@observer
 export default class Sidebar extends React.Component {
   constructor(props) {
     super(props)
@@ -12,7 +15,7 @@ export default class Sidebar extends React.Component {
   }
 
   state = {
-    selectKey: this.props.commonStore.currentPath || "merchant",
+    selectKey: this.props.commonStore.currentPath,
     defaultOpenKeys: []
   }
 
@@ -23,6 +26,8 @@ export default class Sidebar extends React.Component {
     } else {
       this.state.defaultOpenKeys = ['sub1']
     }
+    const {commonStore} = this.props;
+    debugger
     return (
       <div className="sidebar">
         <Menu mode="inline"

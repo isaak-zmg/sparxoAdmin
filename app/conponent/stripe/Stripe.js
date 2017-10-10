@@ -45,7 +45,7 @@ export default class Stripe extends React.Component {
   componentWillMount() {
     const { commonStore, location } = this.props;
     var path = location.pathname.split("/")[1];
-    commonStore.currentPaht = path;
+    commonStore.currentPath = path;
     stripeStore.loadStripeMethods();
   }
 

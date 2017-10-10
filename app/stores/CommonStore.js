@@ -9,6 +9,7 @@ class CommonStore {
   @observable accessToken = '';
   @observable isfetching = false;
   @observable isloading =false;
+  @observable currentPath = "";
 
   @action login(values) {
     var temp_values = Object.assign({}, values, {
@@ -49,9 +50,6 @@ class CommonStore {
       })
       .catch(err => message.error(err.message, 4)) //提示延迟4秒结束
   };
-
-
-  @observable currentPah = ""
 
   @action test() {
     fetch(`${apiConf.root}${apiConf.current_user}`, toGetData({

@@ -215,7 +215,7 @@ export default class Merchant extends React.Component {
   componentWillMount() {
     const { commonStore, location } = this.props;
     var path = location.pathname.split("/")[1];
-    commonStore.currentPaht = path;
+    commonStore.currentPath = path;
     var url_params = {
       has_developer: merchantStore.has_developer
     }

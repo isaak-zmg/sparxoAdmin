@@ -5,22 +5,15 @@ import { observer } from 'mobx-react';
 import commonStore from '../stores/CommonStore';
 import { getLocal } from '../utils';
 import { currentUserKey } from '../consts';
-import { Row, Col } from 'antd';
 
+
+import AppCon from './AppCon'
 import Login from './login/Login';
-import Merchant from './merchant/Merchant';
-import Header from './Header';
-import Sidebar from './Sidebar';
-import User from './user/User';
-import Language from './language/Language';
-import Stripe from './stripe/Stripe';
 import Test from './test/Test'
 
 import './style.less';
 
-//const commonStore = new CommonStore();
 
-@observer
 export default class App extends React.Component {
 
   constructor(props) {
@@ -41,35 +34,16 @@ export default class App extends React.Component {
       <HashRouter>
         <div>
           <Route path='/login' render={(props) => <Login commonStore={commonStore} {...props} />}></Route>
-          {
-            commonStore.currentUser ?
-              <div className="container">
-                <Header commonStore={commonStore} />
-                <Row className="main-wrapper">
-                  <Col xs={24} sm={24} md={6} lg={4}>
-                    <Sidebar commonStore={commonStore} />
-                  </Col>
-                  <Col xs={0} sm={0} md={18} lg={20}>
-                    <PrivateRoute path='/' component={Merchant} exact />
-                    <PrivateRoute path='/merchant' component={Merchant} />
-                    <PrivateRoute path='/user' component={User} />
-                    <PrivateRoute path='/language' component={Language} />
-                    <PrivateRoute path='/stripe' component={Stripe} />
-                    <Route path='/test' exact component={Test}></Route>
-                  </Col>
-                </Row>
-              </div>
-              :
-              null
-            }
-          
+          <Route path='/test' exact component={Test}></Route>
+          <PrivateRoute path="/" component={AppCon} commonStore={commonStore} />
         </div>
       </HashRouter>
     )
   }
 }
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component,commonStore, ...rest }) => {
+  
   return (
     <Route {...rest} render={props => (
       commonStore.currentUser

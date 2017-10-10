@@ -16,8 +16,9 @@ export default class Login extends React.Component {
     const { from } = this.props.location.state || { from: { pathname: '/' } }
     const { commonStore } = this.props;
     const WrappedLoginForm = Form.create()(LoginForm);
-
+    
     if (commonStore.currentUser) {
+      
       return (
         <Redirect to={from} />
       )
@@ -27,7 +28,7 @@ export default class Login extends React.Component {
       <div className="login-container">
         <div className="login-wraper">
           <div className='login-logo'>
-            <img src="../../images/new_logo.png" alt="" />
+            <img src={require("../../images/new_logo.png")} alt="" />
             <h1>Sparxo</h1>
           </div>
           <WrappedLoginForm store={commonStore} />
